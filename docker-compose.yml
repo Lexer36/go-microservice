@@ -1,0 +1,31 @@
+version: '3.8'
+
+networks:
+  test:
+   driver: bridge
+   ipam:
+    config:
+    - subnet: 172.111.112.0/24
+
+services:
+  server:
+    restart: unless-stopped
+    build: ./
+    ports:
+      - 8101:8101
+    networks:
+      - test
+    volumes:
+      - ./logs/:/app/src/logs/
+  #   depends_on:
+  #     - clickhouse
+
+  # clickhouse:
+  #   image: yandex/clickhouse-server
+  #   container_name: clickhouse
+  #   restart: always
+  #   ports:
+  #     - 8124:8123
+  #     - 9001:9000
+  #   networks:
+  #     - test
