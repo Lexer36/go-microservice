@@ -22,6 +22,8 @@ func SelectByTypeAndTime(eventType string, timeStart, timeEnd time.Time) ([]*mod
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
+
 	var result []*models.Event
 	for rows.Next() {
 		event := &models.Event{}
