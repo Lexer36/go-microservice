@@ -1,0 +1,33 @@
+definitions:
+  models.Event:
+    properties:
+      evenId:
+        type: integer
+      eventTime:
+        type: string
+      eventType:
+        type: string
+      payload:
+        type: string
+      userId:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /api/event:
+    post:
+      description: handles and saves event
+      operationId: HandleEvent
+      parameters:
+      - description: event
+        in: body
+        name: Event
+        required: true
+        schema:
+          $ref: '#/definitions/models.Event'
+      responses:
+        "200":
+          description: OK
+      summary: handle event
+swagger: "2.0"

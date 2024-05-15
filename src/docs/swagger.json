@@ -1,0 +1,53 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/event": {
+            "post": {
+                "description": "handles and saves event",
+                "summary": "handle event",
+                "operationId": "HandleEvent",
+                "parameters": [
+                    {
+                        "description": "event",
+                        "name": "Event",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Event"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.Event": {
+            "type": "object",
+            "properties": {
+                "evenId": {
+                    "type": "integer"
+                },
+                "eventTime": {
+                    "type": "string"
+                },
+                "eventType": {
+                    "type": "string"
+                },
+                "payload": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}
